@@ -1,0 +1,8 @@
+{
+    "MetadataVars": {
+        "IMAGE_NAME": "frontend",
+        "DOCKER_IMAGE": "$(CR_HOST)/$(CR_HOST_NAMESPACE)/$(EDGE_OWNER).$(EDGE_DEPLOY).frontend",
+        "SERVICE_NAME": "$(EDGE_OWNER).$(EDGE_DEPLOY).frontend",
+        "SERVICE_VERSION": "0.0.1"
+    }
+}

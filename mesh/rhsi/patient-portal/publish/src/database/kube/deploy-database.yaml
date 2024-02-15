@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database
+  labels:
+    app: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+      - image: us.icr.io/mesh-poc/sg.cedge.ex.mesh.rhsi.patientportal.database_amd64:0.0.1
+        imagePullPolicy: Always
+        name: sg-pp-image-db-back
+        ports:
+          - containerPort: 5432
+      imagePullSecrets:
+      - name: sg-pp-mesh-poc-image-pull-db-back-sec
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: database
+  name: database
+spec:
+  ports:
+  - port: 5432
+    protocol: TCP
+    targetPort: 5432
+  selector:
+    app: database
+  type: ClusterIP

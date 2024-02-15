@@ -1,0 +1,8 @@
+{
+    "MetadataVars": {
+        "IMAGE_NAME": "payment-processor",
+        "DOCKER_IMAGE": "$(CR_HOST)/$(CR_HOST_NAMESPACE)/$(EDGE_OWNER).$(EDGE_DEPLOY).payment-processor",
+        "SERVICE_NAME": "$(EDGE_OWNER).$(EDGE_DEPLOY).payment-processor",
+        "SERVICE_VERSION": "0.0.1"
+    }
+}
