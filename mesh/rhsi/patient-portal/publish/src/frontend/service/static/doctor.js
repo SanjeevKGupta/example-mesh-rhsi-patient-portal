@@ -22,7 +22,7 @@ import * as main from "./main.js";
 
 const html = `
 <body>
-  <header style="background-color: #e5e5e5;">
+  <header>
     <div>
       <div>
         <div class="logo"></div><div class="headline">Hybrid Cloud Mesh - RHSI - Patient Portal</div>
@@ -34,7 +34,7 @@ const html = `
     </div>
   </header>
 
-  <section style="background-color: #d5d5d5;">
+  <section>
     <div>
 
 <div class="tabs" id="tab">

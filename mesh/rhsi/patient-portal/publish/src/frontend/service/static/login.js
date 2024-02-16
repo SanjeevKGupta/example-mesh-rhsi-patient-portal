@@ -23,12 +23,21 @@ import * as main from "./main.js";
 const html = `
 <body class="excursion login">
   <section>
-    <div style="background-color: #d5d5d5;">
+    <div>
       <div class="logo"></div><div class="headline">Hybrid Cloud Mesh - RHSI - Patient Portal</div>
-
-      <p>Patient Portal is an example application.  It uses a web
-      frontend, a relational database, and a payment-processing
-      service.</p>
+      <hr>
+      <div class="hflex">
+        <div>
+          <p>Patient Portal is a simple example application where public frontend is accessing private network resources using Mesh RHSI gateways.</p>
+          <div>It showcases three interacting services:</div>
+          <div>- A web frontend</div>
+          <div>- A relational database</div>
+          <div>- A simulated payment-processor</div>
+        </div>
+        <div>
+          <div><img src="/static/pp.png" width="285" height="158"></div>
+        </div>
+      </div>
 
       <p>Patients can request appointments and pay bills.  Doctors can
       confirm appointments and bill patients.  Log in as a patient or

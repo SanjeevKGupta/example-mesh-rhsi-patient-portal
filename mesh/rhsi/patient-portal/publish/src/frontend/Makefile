@@ -1,5 +1,5 @@
 #
-# Makefile : frontend
+# Makefile : portal frontend
 #
 
 # Check all necessary environment variables
@@ -15,22 +15,11 @@ export K_SERVICE_VERSION=${SERVICE_VERSION}
 
 all: build push apply_kube
 
-check_var_namespace:
-	$(call cmd_var_check,NAMESPACE,as make <target> NAMESPACE=<namespace>)
-	@echo ""
-	@echo "\033[1;30mCheching namespace ${NAMESPACE} \033[0m"
-	@echo "NAMESPACE: ${NAMESPACE}"
-
 # Build the docker container
 build:
 	@echo ""
 	@echo "\033[1;30mBuilding image ${DOCKER_IMAGE}_$(ARCH):${SERVICE_VERSION} \033[0m"
 	@docker build --platform linux/${ARCH} -t ${DOCKER_IMAGE}_$(ARCH):${SERVICE_VERSION} -f ./Dockerfile.${ARCH} .
-
-#test_docker_run:
-#	@echo "To test, curl in a different terminal"
-#	@echo "   curl localhost:${K_PP_PORT_BACK}"
-#	docker run --net=host $(DOCKER_IMAGE)_$(ARCH):$(SERVICE_VERSION)
 
 # Push the docker container to the authenticatd CR
 push:
@@ -45,6 +34,12 @@ push:
 -include ../../env.var.app.kube.mk
 test_kube_envsubst:
 	envsubst < ./kube/deploy-frontend.yaml.tmpl
+
+check_var_namespace:
+	$(call cmd_var_check,NAMESPACE,as make <target> NAMESPACE=<namespace>)
+	@echo ""
+	@echo "\033[1;30mCheching namespace ${NAMESPACE} \033[0m"
+	@echo "NAMESPACE: ${NAMESPACE}"
 
 create_namespace: check_var_namespace
 	$(shell kubectl create namespace ${NAMESPACE} > /dev/null 2>&1)
@@ -66,6 +61,12 @@ apply_kube: create_image_pull_secret
 	@echo ""
 	@echo "\033[1;30mCreating new deployment in namespace ${NAMESPACE} \033[0m"
 	envsubst < ./kube/deploy-frontend.yaml.tmpl > ./kube/deploy-frontend.yaml | kubectl apply -n ${NAMESPACE} -f ./kube/deploy-frontend.yaml
+
+	@echo ""
+	@echo "\033[1;30mWaiting 6 seconds before listing pods and svcs \033[0m"
+	sleep 6
+	oc get pods -n ${NAMESPACE}
+	oc get svc -n ${NAMESPACE}
 
 list_pods_svc: create_namespace
 	oc get pods -n ${NAMESPACE}
