@@ -1,5 +1,6 @@
 ## IBM Hybrid Cloud Mesh - patient-portal - my custom example
 <img src=./media/example-mesh-rhsi-patient-portal-banner.png/ width="320">
+
 This leverages skupperproject Patient Portal example. 
 1. [Setup ENVIRONMENT variables](#1-setup-environment-variables) 
 2. [Build, push and deploy application](#2-build-push-and-deploy-application)
