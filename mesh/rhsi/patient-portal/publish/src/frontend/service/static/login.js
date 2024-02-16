@@ -24,7 +24,7 @@ const html = `
 <body class="excursion login">
   <section>
     <div>
-      <div class="logo"></div><div class="headline">Hybrid Cloud Mesh - RHSI - Patient Portal</div>
+      <div class="logo"></div><div class="headline">Patient Portal</div><div style="font-size: 16px;text-align: right;"><span style="background-color: #3ddbd9;">&nbsp;Hybrid Cloud Mesh - RHSI&nbsp;</span></div>
       <hr>
       <div class="hflex">
         <div>

@@ -24,15 +24,12 @@ const html = `
 <body>
   <header>
     <div>
-      <div>
-        <div class="logo"></div><div class="headline">Hybrid Cloud Mesh - RHSI - Patient Portal</div>
-      </div>
-      <nav id="global-nav">
-        <a>Patient <span id="patient-name">-</span></a>
-        <a id="log-out-link" href="/">Log out</a>
-      </nav>
+      <div class="logo"></div>
+      <div style="display: inline-block; font-size: 24px; margin-left: -480px;">Patient Portal</div>
+      <div><a>Patient <span id="patient-name">-</span></a><a id="log-out-link" href="/">Log out</a></div>
     </div>
   </header>
+
   <section>
     <div>
 
