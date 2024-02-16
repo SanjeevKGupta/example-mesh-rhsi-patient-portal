@@ -71,6 +71,7 @@ body.excursion {
 }
 
 body.excursion > section {
+    background-color: #0043ce;
     padding: 2em;
 }
 
