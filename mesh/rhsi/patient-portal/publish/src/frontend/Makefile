@@ -67,6 +67,10 @@ apply_kube: create_image_pull_secret
 	@echo "\033[1;30mCreating new deployment in namespace ${NAMESPACE} \033[0m"
 	envsubst < ./kube/deploy-frontend.yaml.tmpl > ./kube/deploy-frontend.yaml | kubectl apply -n ${NAMESPACE} -f ./kube/deploy-frontend.yaml
 
+list_pods_svc: create_namespace
+	oc get pods -n ${NAMESPACE}
+	oc get svc -n ${NAMESPACE}
+
 # This imports the variables from hzn.json
 .hzn.json.tmp.mk: hzn/hzn.json
 	@ hzn util configconv -f $< > $@
