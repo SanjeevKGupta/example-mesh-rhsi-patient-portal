@@ -4,6 +4,11 @@ body.login > section > div {
     width: auto;
 }
 
+body.panel > section > div {
+    width: auto;
+    height: auto;
+}
+
 body.login h1 {
     font-weight: 400;
 }

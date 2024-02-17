@@ -21,7 +21,7 @@ import * as gesso from "./gesso/main.js";
 import * as main from "./main.js";
 
 const html = `
-<body class="excursion">
+<body class="excursion panel">
   <section>
     <div>
       <h1>Request an appointment</h1>

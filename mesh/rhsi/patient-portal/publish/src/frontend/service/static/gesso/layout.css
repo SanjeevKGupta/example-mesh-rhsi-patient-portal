@@ -17,8 +17,8 @@ section {
 }
 
 header > div, section > div, footer > div {
-    width: 960px;
-    margin: 0 auto;
+    width: auto;
+/*    margin: 0 auto; */
     overflow: hidden;
     height: 100%;
 }
@@ -67,7 +67,6 @@ nav#global-nav {
 
 body.excursion {
     background-color: var(--dark-gray);
-    height: auto;
 }
 
 body.excursion > section {

@@ -21,18 +21,13 @@ import * as gesso from "./gesso/main.js";
 import * as main from "./main.js";
 
 const html = `
-<body>
-  <header>
-    <div>
-      <div class="logo"></div>
-      <div style="display: inline-block; font-size: 24px; margin-left: -480px;">Patient Portal</div>
-      <div><a>Patient <span id="patient-name">-</span></a><a id="log-out-link" href="/">Log out</a></div>
-    </div>
-  </header>
-
+<body class="excursion panel">
   <section>
     <div>
-
+      <div class="logo"></div>
+      <div class="headline">Patient Portal</div>
+      <div style="text-align: right;"><a>Patient <span id="patient-name">-</span></a><a id="log-out-link" href="/">Log out</a></div>
+      <hr>
 <div class="tabs" id="tab">
   <nav>
     <a data-tab="overview">Overview</a>
@@ -42,7 +37,7 @@ const html = `
     <a data-tab="doctors">Doctors</a>
   </nav>
 
-  <div data-tab="overview">
+  <div data-tab="overview" style="height: auto;">
     <h1>Welcome, <span id="greeting-name">-</span>!</h1>
 
     <p><a class="button" id="appointment-request-create-link">Request an appointment</a></p>
@@ -79,10 +74,9 @@ const html = `
   </div>
 </div>
 
+      </div>
     </div>
   </section>
-  <footer>
-  </footer>
 </body>
 `;
 
