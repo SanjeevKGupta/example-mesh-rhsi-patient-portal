@@ -1,7 +1,7 @@
 @import url("./gesso/main.css");
 
 body.login > section > div {
-    width: 720px;
+    width: auto;
 }
 
 body.login h1 {
