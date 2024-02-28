@@ -47,13 +47,13 @@ const html = `
 
       <div class="hflex">
         <div>
-          <h2>Log in as a patient:</h2>
+          <h2>Patient access:</h2>
 
           <nav id="patient-login-links"></nav>
         </div>
 
         <div>
-          <h2>Log in as a doctor:</h2>
+          <h2>Doctor access:</h2>
 
           <nav id="doctor-login-links"></nav>
         </div>

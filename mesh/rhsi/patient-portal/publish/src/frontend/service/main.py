@@ -109,6 +109,11 @@ async def get_notifications(request):
 
 @star.route("/api/data")
 async def get_data(request):
+    async def configure(conn):
+        await conn.set_autocommit(True)
+
+    pool = AsyncConnectionPool(database_url, configure=configure, check=AsyncConnectionPool.check_connection)
+
     async with pool.connection() as conn:
         data = dict()
         tables = "patients", "doctors", "appointment_requests", "appointments", "bills"
