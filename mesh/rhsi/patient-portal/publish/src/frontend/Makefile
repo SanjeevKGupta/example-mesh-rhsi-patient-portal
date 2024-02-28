@@ -46,17 +46,17 @@ create_namespace: check_var_namespace
 
 create_image_pull_secret: create_namespace
 	@echo ""
-	@echo "\033[1;30mDeleting existing image pull secret ${K_PP_IMAGE_PULL_SECRET_NAME_FRONT} \033[0m"
-	$(kubectl delete secret ${K_PP_IMAGE_PULL_SECRET_NAME_FRONT} -n ${NAMESPACE} > /dev/null 2>&1)
+	@echo "\033[1;30mDeleting existing image pull secret ${K_PP_IMAGE_PULL_SECRET_UI_FRONT} \033[0m"
+	$(kubectl delete secret ${K_PP_IMAGE_PULL_SECRET_UI_FRONT} -n ${NAMESPACE} > /dev/null 2>&1)
 
 	@echo ""
-	@echo "\033[1;30mCreating new image pull secret ${K_PP_IMAGE_PULL_SECRET_NAME_FRONT} \033[0m"
-	$(shell kubectl create secret docker-registry ${K_PP_IMAGE_PULL_SECRET_NAME_FRONT} -n ${NAMESPACE} --docker-server=${CR_HOST} --docker-username=${CR_HOST_USERNAME} --docker-password=${CR_APP_API_KEY_RO_PULL} --docker-email="" > /dev/null 2>&1)
+	@echo "\033[1;30mCreating new image pull secret ${K_PP_IMAGE_PULL_SECRET_UI_FRONT} \033[0m"
+	$(shell kubectl create secret docker-registry ${K_PP_IMAGE_PULL_SECRET_UI_FRONT} -n ${NAMESPACE} --docker-server=${CR_HOST} --docker-username=${CR_HOST_USERNAME} --docker-password=${CR_APP_API_KEY_RO_PULL} --docker-email="" > /dev/null 2>&1)
 
 apply_kube: create_image_pull_secret
 	@echo ""
-	@echo "\033[1;30mDeleting existing deployment ${K_PP_NAME_FRONT} \033[0m"
-	$(shell kubectl delete deploy ${K_PP_NAME_FRONT} -n ${NAMESPACE} > /dev/null 2>&1)
+	@echo "\033[1;30mDeleting existing deployment ${K_PP_NAME_UI_FRONT} \033[0m"
+	$(shell kubectl delete deploy ${K_PP_NAME_UI_FRONT} -n ${NAMESPACE} > /dev/null 2>&1)
 
 	@echo ""
 	@echo "\033[1;30mCreating new deployment in namespace ${NAMESPACE} \033[0m"

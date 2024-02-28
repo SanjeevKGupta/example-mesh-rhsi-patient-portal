@@ -17,11 +17,11 @@ spec:
       containers:
       - image: ${K_DOCKER_IMAGE}_${K_ARCH}:${K_SERVICE_VERSION}
         imagePullPolicy: Always
-        name: ${K_PP_IMAGE_NAME_DB_BACK}
+        name: ${K_PP_IMAGE_DB_BACK}
         ports:
           - containerPort: ${K_PP_SERVICE_PORT_DB_BACK}
       imagePullSecrets:
-      - name: ${K_PP_IMAGE_PULL_SECRET_NAME_DB_BACK}
+      - name: ${K_PP_IMAGE_PULL_SECRET_DB_BACK}
 ---
 apiVersion: v1
 kind: Service

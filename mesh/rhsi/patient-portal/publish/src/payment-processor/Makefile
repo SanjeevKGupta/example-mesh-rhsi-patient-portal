@@ -47,21 +47,31 @@ create_namespace: check_var_namespace
 
 create_image_pull_secret: create_namespace
 	@echo ""
-	@echo "\033[1;30mDeleting existing image pull secret ${K_PP_IMAGE_PULL_SECRET_NAME_PP_BACKT} \033[0m"
-	$(kubectl delete secret ${K_PP_IMAGE_PULL_SECRET_NAME_PP_BACK} -n ${NAMESPACE} > /dev/null 2>&1)
+	@echo "\033[1;30mDeleting existing image pull secret ${K_PP_IMAGE_PULL_SECRET_PROC_BACKT} \033[0m"
+	$(kubectl delete secret ${K_PP_IMAGE_PULL_SECRET_PROC_BACK} -n ${NAMESPACE} > /dev/null 2>&1)
 
 	@echo ""
-	@echo "\033[1;30mCreating new image pull secret ${K_PP_IMAGE_PULL_SECRET_NAME_PP_BACK} \033[0m"
-	$(shell kubectl create secret docker-registry ${K_PP_IMAGE_PULL_SECRET_NAME_PP_BACK} -n ${NAMESPACE} --docker-server=${CR_HOST} --docker-username=${CR_HOST_USERNAME} --docker-password=${CR_APP_API_KEY_RO_PULL} --docker-email="" > /dev/null 2>&1)
+	@echo "\033[1;30mCreating new image pull secret ${K_PP_IMAGE_PULL_SECRET_PROC_BACK} \033[0m"
+	$(shell kubectl create secret docker-registry ${K_PP_IMAGE_PULL_SECRET_PROC_BACK} -n ${NAMESPACE} --docker-server=${CR_HOST} --docker-username=${CR_HOST_USERNAME} --docker-password=${CR_APP_API_KEY_RO_PULL} --docker-email="" > /dev/null 2>&1)
 
 apply_kube: create_image_pull_secret
 	@echo ""
-	@echo "\033[1;30mDeleting existing deployment ${K_PP_NAME_PP_BACK} \033[0m"
-	$(shell kubectl delete deploy ${K_PP_NAME_PP_BACK} -n ${NAMESPACE} > /dev/null 2>&1)
+	@echo "\033[1;30mDeleting existing deployment ${K_PP_NAME_PROC_BACK} \033[0m"
+	$(shell kubectl delete deploy ${K_PP_NAME_PROC_BACK} -n ${NAMESPACE} > /dev/null 2>&1)
 
 	@echo ""
 	@echo "\033[1;30mCreating new deployment in namespace ${NAMESPACE} \033[0m"
 	envsubst < ./kube/deploy-payment-processor.yaml.tmpl > ./kube/deploy-payment-processor.yaml | kubectl apply -n ${NAMESPACE} -f ./kube/deploy-payment-processor.yaml
+
+	@echo ""
+	@echo "\033[1;30mWaiting 6 seconds before listing pods and svcs \033[0m"
+	sleep 6
+	oc get pods -n ${NAMESPACE}
+	oc get svc -n ${NAMESPACE}
+
+list_pods_svc: create_namespace
+	oc get pods -n ${NAMESPACE}
+	oc get svc -n ${NAMESPACE}
 
 # This imports the variables from hzn.json
 .hzn.json.tmp.mk: hzn/hzn.json
