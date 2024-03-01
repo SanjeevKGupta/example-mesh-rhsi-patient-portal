@@ -49,49 +49,35 @@ NAMESPACE is set as an argument while building, pushing and deploying the app. `
 
 **File:** env-app-kube-deploy
 ```
+# NAMESPACE is set as an argument to make <target> NAMESPACE=<namespace>
+
 # An identifiable name of the frontend service. Arbitrary.
-export K_PP_NAME_FRONT=<sg-pp-frontend>
+export K_PP_NAME_UI_FRONT=<sn-demo-pp-ui-front>
 # Same name as above. Used by the k8s selector
-export K_PP_LABEL_APP_FRONT=<sg-pp-frontend>
-# frontend pod relica count. 3
-export K_PP_REPLICAS_FRONT=<3>
+export K_PP_LABEL_APP_UI_FRONT=<sn-demo-pp-ui-front>
+# frontend pod relica count. 1
+export K_PP_REPLICAS_UI_FRONT=1
 # An identifiable image name, Arbitrary.
-export K_PP_IMAGE_NAME_FRONT=<sg-pp-image-frontend>
-# An identifiable name., Arbitrary
-export K_PP_IMAGE_PULL_SECRET_NAME_FRONT=<sg-pp-mesh-poc-image-pull-front-sec>
+export K_PP_IMAGE_UI_FRONT=<sn-demo-pp-image-ui-front>
+export K_PP_IMAGE_PULL_SECRET_UI_FRONT=<sn-demo-pp-image-pull-sec-ui-front>
+export K_PP_CONTAINER_PORT_UI_FRONT=8080
 
-# Database service host
-export K_PP_SERVICE_HOST_DB_BACK=database
-# Database service port
+export K_PP_SERVICE_HOST_DB_BACK=<sn-demo-pp-db-back>
 export K_PP_SERVICE_PORT_DB_BACK=5432
-# Payment-processor service host
-export K_PP_SERVICE_HOST_PP_BACK=payment-processor
-# Payment-processor service port
-export K_PP_SERVICE_PORT_PP_BACK=8080
-# Frontend service port
-export K_PP_CONTAINER_PORT_FRONT=8080
+export K_PP_SERVICE_HOST_PROC_BACK=<sn-demo-pp-processor-back>
+export K_PP_SERVICE_PORT_PROC_BACK=8080
 
-# Database service name
-export K_PP_NAME_DB_BACK=database
-# Database service label name. Same as above
-export K_PP_LABEL_APP_DB_BACK=database
-# Database pod relica count. 1
+export K_PP_NAME_DB_BACK=<sn-demo-pp-db-back>
+export K_PP_LABEL_APP_DB_BACK=<sn-demo-pp-db-back>
 export K_PP_REPLICAS_DB_BACK=1
-# An identifiable image name, Arbitrary.
-export K_PP_IMAGE_NAME_DB_BACK=sg-pp-image-db-back
-# An identifiable name., Arbitrary
-export K_PP_IMAGE_PULL_SECRET_NAME_DB_BACK=sg-pp-mesh-poc-image-pull-db-back-sec
+export K_PP_IMAGE_DB_BACK=<sn-demo-pp-image-db-back>
+export K_PP_IMAGE_PULL_SECRET_DB_BACK=<sn-demo-pp-image-pull-sec-db-back>
 
-# Payment-processor service name
-export K_PP_NAME_PP_BACK=payment-processor
-# Payment-processor service label name. Same as above
-export K_PP_LABEL_APP_PP_BACK=payment-processor
-# Payment-processor pod relica count. 1
-export K_PP_REPLICAS_PP_BACK=3
-# An identifiable image name, Arbitrary.
-export K_PP_IMAGE_NAME_PP_BACK=sg-pp-image-pp-back
-# An identifiable name., Arbitrary
-export K_PP_IMAGE_PULL_SECRET_NAME_PP_BACK=sg-pp-mesh-poc-image-pull-pp-back-sec
+export K_PP_NAME_PROC_BACK=<sn-demo-pp-processor-back>
+export K_PP_LABEL_APP_PROC_BACK=<sn-demo-pp-processor-back>
+export K_PP_REPLICAS_PROC_BACK=3
+export K_PP_IMAGE_PROC_BACK=<sn-demo-pp-image-processor-back>
+export K_PP_IMAGE_PULL_SECRET_PROC_BACK=<sn-demo-pp-image-pull-sec-processor-back>
 
 ```
 ### 2. Build, push and deploy application 
