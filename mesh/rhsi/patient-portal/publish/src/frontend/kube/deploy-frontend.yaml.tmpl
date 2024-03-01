@@ -24,9 +24,9 @@ spec:
           - name: DATABASE_SERVICE_PORT
             value: "${K_PP_SERVICE_PORT_DB_BACK}"
           - name: PAYMENT_PROCESSOR_SERVICE_HOST
-            value: ${K_PP_SERVICE_HOST_PP_BACK}
+            value: ${K_PP_SERVICE_HOST_PROC_BACK}
           - name: PAYMENT_PROCESSOR_SERVICE_PORT
-            value: "${K_PP_SERVICE_PORT_PP_BACK}"
+            value: "${K_PP_SERVICE_PORT_PROC_BACK}"
         ports:
           - containerPort: ${K_PP_CONTAINER_PORT_UI_FRONT}
       imagePullSecrets:

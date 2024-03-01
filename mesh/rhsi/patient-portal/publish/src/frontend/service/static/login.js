@@ -42,7 +42,7 @@ const html = `
       </div>
 
       <p>Patients can request appointments and pay bills.  Doctors can
-      confirm appointments and bill patients.  Log in as a patient or
+      confirm appointments and bill patients. Access as a patient or
       doctor to try it out.</p>
 
       <div class="hflex">
