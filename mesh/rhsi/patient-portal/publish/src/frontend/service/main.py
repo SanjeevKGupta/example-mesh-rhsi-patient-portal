@@ -114,6 +114,18 @@ async def get_data(request):
 
     pool = AsyncConnectionPool(database_url, configure=configure, check=AsyncConnectionPool.check_connection)
 
+    env_dict = dict()
+
+    host_dict = dict()
+    host_dict["key"] = "HOSTNAME"
+    host_dict["value"] = os.environ.get(host_dict["key"], "hostname")
+    env_dict["hostname"] = host_dict
+
+    db_dict = dict()
+    db_dict["key"] = "DATABASE_SERVICE_HOST"
+    db_dict["value"] = os.environ.get(db_dict["key"], "database-service-host")
+    env_dict["db-service-host"] = db_dict
+
     async with pool.connection() as conn:
         data = dict()
         tables = "patients", "doctors", "appointment_requests", "appointments", "bills"
@@ -129,6 +141,8 @@ async def get_data(request):
                 items[item["id"]] = item
 
             data[table] = items
+
+        data["env"] = env_dict;
 
     return CustomJsonResponse(data)
 

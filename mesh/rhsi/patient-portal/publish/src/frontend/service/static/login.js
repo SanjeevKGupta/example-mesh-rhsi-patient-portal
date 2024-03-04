@@ -58,6 +58,11 @@ const html = `
           <nav id="doctor-login-links"></nav>
         </div>
       </div>
+      <hr>
+      <div>
+        <span id="env-hostname"></span><br>
+        <span id="env-db_service_host"></span>
+      </div>
     </div>
   </section>
 </body>
@@ -83,6 +88,16 @@ function updateDoctorLoginLinks(data) {
     $("#doctor-login-links").replaceWith(nav);
 }
 
+function updateEnvData(data) {
+    const env_dict = data.env;
+
+    const host_dict = env_dict["hostname"]
+    $("#env-hostname").innerHTML = "<b>" + host_dict["key"] + ": </b>" + host_dict["value"]
+
+    const db_dict = env_dict["db-service-host"]
+    $("#env-db_service_host").innerHTML = "<b>" + db_dict["key"] + ": </b>" + db_dict["value"]
+}
+
 export class MainPage extends gesso.Page {
     constructor(router) {
         super(router, "/", html);
@@ -92,6 +107,7 @@ export class MainPage extends gesso.Page {
         gesso.fetchJSON("/api/data", data => {
             updatePatientLoginLinks(data);
             updateDoctorLoginLinks(data);
+	    updateEnvData(data);
         });
     }
 }
