@@ -59,9 +59,15 @@ const html = `
         </div>
       </div>
       <hr>
-      <div>
-        <span id="env-hostname"></span><br>
-        <span id="env-db_service_host"></span>
+      <div style="width:100%; overflow:hidden;">
+        <div style="width:80%; float:left;">
+          <span id="env-hostname"></span><br>
+          <span id="env-db_service_host"></span>
+        </div>
+        <div style="width:20%; float:right;">
+          <span style="text-align:right;" id="current-date"></span><br>
+          <span style="text-align:right;" id="current-time"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -96,6 +102,9 @@ function updateEnvData(data) {
 
     const db_dict = env_dict["db-service-host"]
     $("#env-db_service_host").innerHTML = "<b>" + db_dict["key"] + ": </b>" + db_dict["value"]
+
+    $("#current-date").innerHTML = new Date().toLocaleDateString();
+    $("#current-time").innerHTML = new Date().toLocaleTimeString();
 }
 
 export class MainPage extends gesso.Page {

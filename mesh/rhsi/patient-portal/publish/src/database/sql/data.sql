@@ -72,7 +72,7 @@ execute procedure notify_changes();
 insert into patients
   (name, zip, phone, email)
 values
-  ('Ike Ivy', '01821', '206-455-7225', 'monkey@example.net'),
+  ('Ike Dale', '01821', '206-455-7225', 'monkey@example.net'),
   ('Dwight Schrute', '02143', '555-102-3087', 'recyclops@example.net'),
   ('Gabe Lewis', '12345', '555-103-4098', 'skeletonman@example.net'),
   ('Jim Halpert', '98823', '617-234-5678', 'bigtuna@example.net'),
