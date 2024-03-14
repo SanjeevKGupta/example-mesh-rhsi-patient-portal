@@ -36,7 +36,7 @@ deploy-ui-execute: verify-ui-kube-yaml check_yn
 	@echo "\033[1;30mBuild, push and kube deploy...\033[0m"
 	make -C src/frontend build 
 	make -C src/frontend push
-	make -C src/frontend apply_kube NAMESPACE=${NAMESPACE_PREFIX}-fronr
+	make -C src/frontend apply_kube NAMESPACE=${NAMESPACE_PREFIX}-front
 
 verify-database-kube-yaml: switch-cluster
 	@echo "\033[1;30mGenerating deployment yaml...\033[0m"
