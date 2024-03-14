@@ -94,14 +94,14 @@ Example:
 
 make ui CLUSTER=kc-iks-dc NAMESPACE_PREFIX=sn-demo-po-prod-mc-iks-dc
 ```
-#### 4. Deploy `database` backend
+### 4. Deploy `database` backend
 Will append `-back` with NAMESPACE_PREFIX
 ```
 Example:
 
 make database CLUSTER=kc-iks-dc NAMESPACE_PREFIX=sn-demo-po-prod-mc-iks-dc
 ```
-#### 5. Deploy `processor` backend
+### 5. Deploy `processor` backend
 Will append `-back` with NAMESPACE_PREFIX
 ```
 Example:
