@@ -1,4 +1,4 @@
-## IBM Hybrid Cloud Mesh - Patient Portal - A custom example
+## IBM Hybrid Cloud Mesh - RHSI- Patient Portal - A custom example
 <img src=./media/example-mesh-rhsi-patient-portal-banner.png/ width="320">
 
 This leverages skupperproject Patient Portal example. 
