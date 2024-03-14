@@ -1,0 +1,9 @@
+{
+    "MetadataVars": {
+        "K_PREFIX": "$(EDGE_RESOURCE_PREFIX)",
+        "IMAGE_NAME": "processor",
+        "DOCKER_IMAGE": "$(CR_HOST)/$(CR_HOST_NAMESPACE)/$(EDGE_OWNER).$(EDGE_DEPLOY).processor",
+        "SERVICE_NAME": "$(EDGE_OWNER).$(EDGE_DEPLOY).processor",
+        "SERVICE_VERSION": "0.0.1"
+    }
+}

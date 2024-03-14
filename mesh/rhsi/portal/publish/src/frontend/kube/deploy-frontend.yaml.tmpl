@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${K_PREFIX}-${K_PO_NAME_UI_FRONT}
+  labels:
+    app: ${K_PREFIX}-${K_PO_LABEL_APP_UI_FRONT}
+spec:
+  replicas: ${K_PO_REPLICAS_UI_FRONT}
+  selector:
+    matchLabels:
+      app: ${K_PREFIX}-${K_PO_LABEL_APP_UI_FRONT}
+  template:
+    metadata:
+      labels:
+        app: ${K_PREFIX}-${K_PO_LABEL_APP_UI_FRONT}
+    spec:
+      containers:
+      - image: ${K_DOCKER_IMAGE}_${K_ARCH}:${K_SERVICE_VERSION}
+        imagePullPolicy: Always
+        name: ${K_PREFIX}-${K_PO_IMAGE_NAME_UI_FRONT}
+        env:
+          - name: DATABASE_SERVICE_HOST
+            value: ${K_PREFIX}-${K_PO_SERVICE_HOST_DB_BACK}
+          - name: DATABASE_SERVICE_PORT
+            value: "${K_PO_SERVICE_PORT_DB_BACK}"
+          - name: PAYMENT_PROCESSOR_SERVICE_HOST
+            value: ${K_PREFIX}-${K_PO_SERVICE_HOST_PP_BACK}
+          - name: PAYMENT_PROCESSOR_SERVICE_PORT
+            value: "${K_PO_SERVICE_PORT_PP_BACK}"
+        ports:
+          - containerPort: ${K_PO_CONTAINER_PORT_FRONT}
+      imagePullSecrets:
+      - name: ${K_PREFIX}-${K_PO_IMAGE_PULL_SECRET_UI_FRONT}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ${K_PREFIX}-${K_PO_LABEL_APP_UI_FRONT}
+  name: ${K_PREFIX}-${K_PO_NAME_UI_FRONT}
+spec:
+  ports:
+  - port: ${K_PO_CONTAINER_PORT_FRONT}
+    protocol: TCP
+    targetPort: ${K_PO_CONTAINER_PORT_FRONT}
+  selector:
+    app: ${K_PREFIX}-${K_PO_LABEL_APP_UI_FRONT}
+  type: LoadBalancer

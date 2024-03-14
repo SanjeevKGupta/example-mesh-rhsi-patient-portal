@@ -25,12 +25,12 @@ const html = `
   <section>
     <div>
       <div class="logo"></div>
-      <div class="headline">Patient Portal</div>
+      <div class="headline">Customer Portal</div>
       <div style="font-size: 16px;text-align: right;"><span style="background-color: #3ddbd9;">&nbsp;Hybrid Cloud Mesh - RHSI&nbsp;</span></div>
       <hr>
       <div class="hflex">
         <div>
-          <p>Patient Portal is a simple example application where public frontend is accessing private network resources using Mesh RHSI gateways.</p>
+          <p>Customer Portal is a simple example application where public frontend is accessing private network resources using Mesh RHSI gateways.</p>
           <div>It showcases three interacting services:</div>
           <div>- A web frontend</div>
           <div>- A relational database</div>
@@ -41,19 +41,19 @@ const html = `
         </div>
       </div>
 
-      <p>Patients can request appointments and pay bills.  Doctors can
-      confirm appointments and bill patients. Access as a patient or
-      doctor to try it out.</p>
+      <p>Customers can request appointments and pay bills. Representatives can
+      confirm appointments and bill customers.  Log in as a customer or
+      representative to try it out.</p>
 
       <div class="hflex">
         <div>
-          <h2>Patient access:</h2>
+          <h2>Log in as a customer:</h2>
 
           <nav id="patient-login-links"></nav>
         </div>
 
         <div>
-          <h2>Doctor access:</h2>
+          <h2>Log in as a representative:</h2>
 
           <nav id="doctor-login-links"></nav>
         </div>
@@ -102,6 +102,7 @@ function updateEnvData(data) {
 
     const db_dict = env_dict["db-service-host"]
     $("#env-db_service_host").innerHTML = "<b>" + db_dict["key"] + ": </b>" + db_dict["value"]
+
     $("#current-date").innerHTML = new Date().toLocaleDateString();
     $("#current-time").innerHTML = new Date().toLocaleTimeString();
 }

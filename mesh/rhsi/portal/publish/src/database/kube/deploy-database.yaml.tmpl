@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${K_PREFIX}-${K_PO_NAME_DB_BACK}
+  labels:
+    app: ${K_PREFIX}-${K_PO_LABEL_APP_DB_BACK}
+spec:
+  replicas: ${K_PO_REPLICAS_DB_BACK}
+  selector:
+    matchLabels:
+      app: ${K_PREFIX}-${K_PO_LABEL_APP_DB_BACK}
+  template:
+    metadata:
+      labels:
+        app: ${K_PREFIX}-${K_PO_LABEL_APP_DB_BACK}
+    spec:
+      containers:
+      - image: ${K_DOCKER_IMAGE}_${K_ARCH}:${K_SERVICE_VERSION}
+        imagePullPolicy: Always
+        name: ${K_PREFIX}-${K_PO_IMAGE_NAME_DB_BACK}
+        ports:
+          - containerPort: ${K_PO_SERVICE_PORT_DB_BACK}
+      imagePullSecrets:
+      - name: ${K_PREFIX}-${K_PO_IMAGE_PULL_SECRET_DB_BACK}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ${K_PREFIX}-${K_PO_SERVICE_HOST_DB_BACK}
+  name: ${K_PREFIX}-${K_PO_SERVICE_HOST_DB_BACK}
+spec:
+  ports:
+  - port: ${K_PO_SERVICE_PORT_DB_BACK}
+    protocol: TCP
+    targetPort: ${K_PO_SERVICE_PORT_DB_BACK}
+  selector:
+    app: ${K_PREFIX}-${K_PO_LABEL_APP_DB_BACK}
+  type: ClusterIP
