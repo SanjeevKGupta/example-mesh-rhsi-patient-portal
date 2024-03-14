@@ -3,6 +3,10 @@
 
 # all: deploy-frontend-execute
 
+ui: verify-ui-kube-yaml deploy-ui-execute
+database: verify-database-kube-yaml deploy-database-execute
+processor: verify-processor-kube-yaml deploy-processor-execute
+
 check_yn:
 	@echo "\n\nDeploy \033[0mon CLUSTER: \033[1;30m${CLUSTER} \033[0min NAMESPACE_PREFIX: \033[1;30m${NAMESPACE_PREFIX}\033[0m using above \033[1;30myaml \033[0m"
 	@echo "\033[1;30mOK to proceed? \033[0m[y/N] " && read ans && if [ $${ans:-'N'} = 'y' ]; then ans=""; echo "Proceeding..."; else exit 1; fi
